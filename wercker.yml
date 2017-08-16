@@ -19,14 +19,18 @@ build:
             vendor/bin/phpunit
 
 deploy:
-  # steps:
-  #   - bundle-install
-  #   - script:
-  #       name: write private key env var
-  #       code: |-
-  #         export CAP_PRIVATE_KEY=`mktemp`
-  #         echo -e $WERCKER_APP_KEY_PRIVATE > $CAP_PRIVATE_KEY
-  #   - cap
+  steps:
+    - bundle-install
+    - script:
+        name: write private key env var
+        code: |-
+          export CAP_PRIVATE_KEY=`mktemp`
+          echo -e $WERCKER_APP_KEY_PRIVATE > $CAP_PRIVATE_KEY
+    - cap
+    - heroku-deploy:
+        key: $HEROKU_KEY
+        user: $HEROKU_USER
+        app-name: $HEROKU_APP_NAME
   # after-steps:
   #   - sherzberg/slack-notify:
   #       subdomain: dosomething
