@@ -29,6 +29,7 @@ deploy:
     - script:
         name: Install cap requirements
         code: |-
+          ruby -v
           gem install capistrano-npm
           gem install capistrano-composer
     - cap
