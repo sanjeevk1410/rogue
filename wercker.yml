@@ -30,6 +30,7 @@ deploy:
     - heroku-deploy:
         key: $HEROKU_KEY
         user: $HEROKU_USER
+        key-name: HEROKU_KEY_PAIR
         app-name: $HEROKU_APP_NAME
   # after-steps:
   #   - sherzberg/slack-notify:
