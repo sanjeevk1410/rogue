@@ -26,11 +26,16 @@ deploy:
         code: |-
           export CAP_PRIVATE_KEY=`mktemp`
           echo -e $WERCKER_APP_KEY_PRIVATE > $CAP_PRIVATE_KEY
+    - script:
+        name: Install cap requirements
+        code: |-
+          gem install capistrano-npm
+          gem install capistrano-composer
     - cap
     - heroku-deploy:
         key: $HEROKU_KEY
-        user: $HEROKU_USER
         key-name: HEROKU_KEY_PAIR
+        user: $HEROKU_USER
         app-name: $HEROKU_APP_NAME
   # after-steps:
   #   - sherzberg/slack-notify:
