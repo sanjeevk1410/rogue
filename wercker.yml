@@ -1,4 +1,4 @@
-box: dosomething/ds-docker-php
+box: sanjeevk1410/rogue1
 
 build:
     steps:
