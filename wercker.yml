@@ -1,4 +1,4 @@
-box: ruby2.4
+box: dosomething/ds-docker-php
 
 build:
     steps:
