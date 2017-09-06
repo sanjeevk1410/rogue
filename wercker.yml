@@ -17,6 +17,16 @@ build:
             cp .env.example .env
             php artisan key:generate
             vendor/bin/phpunit
+       - internal/docker-push:
+        entrypoint: bin/get_ip
+        cmd: 0.0.0.0 9090
+        working-dir: $WERCKER_ROOT
+        tag: $WERCKER_GIT_COMMIT
+        ports: "9090"
+        username: $DOCKERHUB_USERNAME
+        password: $DOCKERHUB_PASSWORD
+        repository: $DOCKERHUB_REPO
+registry: $GCR_HOST
 
 deploy:
   steps:
